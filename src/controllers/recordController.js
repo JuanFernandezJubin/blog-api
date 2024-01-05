@@ -1,7 +1,8 @@
-const db = require('../db/index.json');
 const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
 const path = require('path');
+const db = require('../db/index.json');
+const { createId } = require('../lib/helpers');
+
 const dbPath = path.join(__dirname, '..', 'db', 'index.json');
 
 
@@ -62,7 +63,7 @@ const createRecordForWorkout = (req, res) => {
 
   try {
     const newRecord = {
-      id: uuidv4(), // Genera un nuevo UUID para el ID del registro
+      id: createId(), // Genera un nuevo id
       date,
       duration,
       distance,
